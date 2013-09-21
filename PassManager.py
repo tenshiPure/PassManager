@@ -3,23 +3,27 @@
 import wx
 import pyauto
 
+from Gui.InputFrame import InputFrame
+
 class PassManager:
 
 	def __init__(self):
 		self.running = False
+		self.inputFrame = InputFrame(self.hookEnd)
 
-		self.application = wx.App()
-		self.frame = wx.Frame(None, wx.ID_ANY, u"テストフレーム", size=(300,200))
-		self.panel = wx.Panel(self.frame,wx.ID_ANY)
-		self.text = wx.TextCtrl(self.panel,wx.ID_ANY)
+	def hookStart(self):
+		self.hook = pyauto.Hook()
+		self.hook.keydown = self.onKeyDown
+		pyauto.messageLoop()
+
+	def hookEnd(self, event):
+		self.hook.destroy()
 
 	def onKeyDown(self, vk, scan):
 		if not self.running:
-			self.frame.Show()
+			self.inputFrame.frame.Show()
 			self.running = True
 
 if __name__ == '__main__':
-	hook = pyauto.Hook()
 	passManager = PassManager()
-	hook.keydown = passManager.onKeyDown
-	pyauto.messageLoop()
+	passManager.hookStart()
