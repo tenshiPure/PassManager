@@ -9,17 +9,12 @@ class Acount:
 		Acount.id = 0
 
 	def __init__(self, line):
-		parsed = self.parse(line)
+		splited = line.decode('utf-8').encode('cp932').rstrip('\r\n').split(',')
 
 		self.id   = self.getNextId()
-		self.desc = parsed[0]
-		self.name = parsed[1]
-		self.pswd = parsed[2]
-
-	def parse(self, line):
-		splited = line.split(',')
-
-		return splited[0], splited[1], splited[2]
+		self.desc = splited[0]
+		self.name = splited[1]
+		self.pswd = splited[2]
 
 	def getNextId(self):
 		Acount.id += 1

@@ -12,7 +12,7 @@ class Group:
 
 	def __init__(self, name):
 		self.id = self.getNextId()
-		self.name = name
+		self.name = name.encode('cp932')
 		self.acounts = []
 
 		Acount.init()

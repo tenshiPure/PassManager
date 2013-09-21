@@ -13,7 +13,7 @@ dirName = u'./Acounts'
 for fileName in os.listdir(dirName):
 	group = Group(fileName)
 	for line in open(os.path.join(dirName, fileName), 'r'):
-		acount = Acount(line.rstrip('\r\n'))
+		acount = Acount(line)
 		group.addAcount(acount)
 
 	groups.append(group)
