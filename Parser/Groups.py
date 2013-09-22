@@ -41,7 +41,10 @@ class Groups:
 
 		return result
 
-	def getAcount(self, id):
+	def getCurrentGroupName(self):
+		return self.groups[self.currentGroupNum].name
+
+	def getAcountByNumFromCurrentGroup(self, id):
 		return self.groups[self.currentGroupNum].acounts[id]
 
 	def searchAcountWithGroupName(self, name):
