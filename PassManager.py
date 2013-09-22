@@ -35,11 +35,11 @@ class PassManager:
 			self.modifier = True
 
 		if self.modifier and vk == PassManager.KEY_Q:
-			self.inputFrame.mainFrame.Show()
+			self.inputFrame.Show()
 			self.running = True
 
 		if self.modifier and vk == PassManager.KEY_W:
-			self.selectFrame.mainFrame.Show()
+			self.selectFrame.Show()
 			self.running = True
 
 		return True

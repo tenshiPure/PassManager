@@ -2,17 +2,18 @@
 
 import wx
 
+from RootFrame import RootFrame
+
 from RootPanel import RootPanel
 from InputPanel import InputPanel
 from ButtonPanel import ButtonPanel
 
-class InputFrame:
+class InputFrame(RootFrame):
 
 	def __init__(self, func):
-		self.application = wx.App()
-		self.mainFrame = wx.Frame(None, wx.ID_ANY, 'input mode', style = wx.DEFAULT_FRAME_STYLE & ~wx.SYSTEM_MENU, size=(180, 150), pos = (50, 50))
+		RootFrame.__init__(self, 'input mode')
 
-		self.rootPanel = RootPanel(self.mainFrame)
+		rootPanel = RootPanel(self)
 
-		self.inputPanel = InputPanel(self.rootPanel)
-		self.buttonPanel = ButtonPanel(self.rootPanel, func)
+		inputPanel = InputPanel(rootPanel)
+		buttonPanel = ButtonPanel(rootPanel, func)
