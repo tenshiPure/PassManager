@@ -4,17 +4,15 @@ import wx
 
 from RootFrame import RootFrame
 from RootPanel import RootPanel
-from SelectPanel import SelectPanel
+from TextCtrlPanel import TextCtrlPanel
 from ButtonPanel import ButtonPanel
 
-from Groups import Groups
-
-class SelectFrame(RootFrame):
+class TextCtrlFrame(RootFrame):
 
 	def __init__(self, func):
-		RootFrame.__init__(self, 'select mode')
+		RootFrame.__init__(self, 'input mode')
 
 		rootPanel = RootPanel(self)
 
-		selectPanel = SelectPanel(rootPanel, Groups())
+		textCtrlPanel = TextCtrlPanel(rootPanel)
 		buttonPanel = ButtonPanel(rootPanel, func)

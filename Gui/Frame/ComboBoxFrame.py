@@ -4,15 +4,17 @@ import wx
 
 from RootFrame import RootFrame
 from RootPanel import RootPanel
-from InputPanel import InputPanel
+from ComboBoxPanel import ComboBoxPanel
 from ButtonPanel import ButtonPanel
 
-class InputFrame(RootFrame):
+from Groups import Groups
+
+class ComboBoxFrame(RootFrame):
 
 	def __init__(self, func):
-		RootFrame.__init__(self, 'input mode')
+		RootFrame.__init__(self, 'select mode')
 
 		rootPanel = RootPanel(self)
 
-		inputPanel = InputPanel(rootPanel)
+		comboBoxPanel = ComboBoxPanel(rootPanel, Groups())
 		buttonPanel = ButtonPanel(rootPanel, func)

@@ -2,7 +2,7 @@
 
 import wx
 
-class InputPanel(wx.Panel):
+class TextCtrlPanel(wx.Panel):
 
 	def __init__(self, rootPanel):
 		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)

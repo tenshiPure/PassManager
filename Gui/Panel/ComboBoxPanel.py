@@ -2,7 +2,7 @@
 
 import wx
 
-class SelectPanel(wx.Panel):
+class ComboBoxPanel(wx.Panel):
 
 	def __init__(self, rootPanel, groups):
 		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
@@ -34,3 +34,5 @@ class SelectPanel(wx.Panel):
 	def selectAcount(self, event):
 		acountNum = event.GetEventObject().GetSelection()
 		self.acount = self.groups.getAcount(acountNum)
+
+		self.acount.dump()

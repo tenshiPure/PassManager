@@ -4,8 +4,8 @@ import wx
 import pyauto
 
 import AutoLoader
-from InputFrame import InputFrame
-from SelectFrame import SelectFrame
+from TextCtrlFrame import TextCtrlFrame
+from ComboBoxFrame import ComboBoxFrame
 
 class PassManager:
 
@@ -16,8 +16,8 @@ class PassManager:
 	def __init__(self):
 		self.running = False
 		self.modifier = False
-		self.inputFrame = InputFrame(self.hookEnd)
-		self.selectFrame = SelectFrame(self.hookEnd)
+		self.textCtrlFrame = TextCtrlFrame(self.hookEnd)
+		self.comboBoxFrame = ComboBoxFrame(self.hookEnd)
 
 	def hookStart(self):
 		self.hook = pyauto.Hook()
@@ -36,11 +36,11 @@ class PassManager:
 			self.modifier = True
 
 		if self.modifier and vk == PassManager.KEY_Q:
-			self.inputFrame.Show()
+			self.textCtrlFrame.Show()
 			self.running = True
 
 		if self.modifier and vk == PassManager.KEY_W:
-			self.selectFrame.Show()
+			self.comboBoxFrame.Show()
 			self.running = True
 
 		return True
