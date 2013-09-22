@@ -2,10 +2,12 @@
 
 import wx
 
-class ComboBoxPanel(wx.Panel):
+from InputPanel import InputPanel
+
+class ComboBoxPanel(InputPanel):
 
 	def __init__(self, rootPanel, groups):
-		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
+		InputPanel.__init__(self, rootPanel)
 
 		self.groups = groups
 		self.acount = self.groups.getAcount(0)

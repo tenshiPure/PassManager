@@ -2,10 +2,12 @@
 
 import wx
 
-class TextCtrlPanel(wx.Panel):
+from InputPanel import InputPanel
+
+class TextCtrlPanel(InputPanel):
 
 	def __init__(self, rootPanel):
-		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
+		InputPanel.__init__(self, rootPanel)
 
 		idText = wx.TextCtrl(self, wx.ID_ANY, 'id')
 		duplicateText = wx.TextCtrl(self, wx.ID_ANY, 'dup')

@@ -11,10 +11,10 @@ from Groups import Groups
 
 class ComboBoxFrame(RootFrame):
 
-	def __init__(self, func):
+	def __init__(self, exitFunction):
 		RootFrame.__init__(self, 'select mode')
 
 		rootPanel = RootPanel(self)
 
 		comboBoxPanel = ComboBoxPanel(rootPanel, Groups())
-		buttonPanel = ButtonPanel(rootPanel, func)
+		buttonPanel = ButtonPanel(rootPanel, comboBoxPanel, exitFunction)
