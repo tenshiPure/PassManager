@@ -16,10 +16,5 @@ class SelectFrame(RootFrame):
 
 		rootPanel = RootPanel(self)
 
-		groups = Groups()
-		groupNameList = groups.getGroupNameList()
-		acountDescList = groups.getAcountDescList()
-
-
-		selectPanel = SelectPanel(rootPanel, groupNameList, acountDescList)
+		selectPanel = SelectPanel(rootPanel, Groups())
 		buttonPanel = ButtonPanel(rootPanel, func)

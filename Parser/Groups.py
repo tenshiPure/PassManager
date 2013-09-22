@@ -37,9 +37,12 @@ class Groups:
 	def getAcountDescList(self):
 		result = []
 		for acount in self.groups[self.currentGroupNum].acounts:
-			result.append(acount.name)
+			result.append(acount.desc)
 
 		return result
+
+	def getAcount(self, id):
+		return self.groups[self.currentGroupNum].acounts[id]
 
 	def changeGroup(self, index):
 		self.currentGroupNum = index % len(self.groups)
