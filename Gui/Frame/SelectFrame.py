@@ -3,10 +3,11 @@
 import wx
 
 from RootFrame import RootFrame
-
 from RootPanel import RootPanel
 from SelectPanel import SelectPanel
 from ButtonPanel import ButtonPanel
+
+from Groups import Groups
 
 class SelectFrame(RootFrame):
 
@@ -15,8 +16,10 @@ class SelectFrame(RootFrame):
 
 		rootPanel = RootPanel(self)
 
-		groups = ['slf', 'soms']
-		acounts = ['nrz', 'nlz', 'nyb']
+		groups = Groups()
+		groupNameList = groups.getGroupNameList()
+		acountDescList = groups.getAcountDescList()
 
-		selectPanel = SelectPanel(rootPanel, groups, acounts)
+
+		selectPanel = SelectPanel(rootPanel, groupNameList, acountDescList)
 		buttonPanel = ButtonPanel(rootPanel, func)

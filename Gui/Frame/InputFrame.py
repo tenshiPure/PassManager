@@ -3,7 +3,6 @@
 import wx
 
 from RootFrame import RootFrame
-
 from RootPanel import RootPanel
 from InputPanel import InputPanel
 from ButtonPanel import ButtonPanel
