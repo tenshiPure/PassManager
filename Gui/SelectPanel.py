@@ -2,35 +2,17 @@
 
 import wx
 
-class ButtonPanel(wx.Panel):
+class SelectPanel(wx.Panel):
 
-	def __init__(self, rootPanel, func):
+	def __init__(self, rootPanel, groups, acounts):
 		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
 
-		self.buttonInputTwice = wx.Button(self, wx.ID_ANY, 'id / pass')
-		self.buttonInputTwice.Bind(wx.EVT_BUTTON, self.inputTwice)
+		comboboxGroup = wx.ComboBox(self, wx.ID_ANY, choices = groups)
+		comboboxAcounts = wx.ComboBox(self, wx.ID_ANY, choices = acounts)
 
-		self.buttonInputOnce = wx.Button(self, wx.ID_ANY, 'pass')
-		self.buttonInputOnce.Bind(wx.EVT_BUTTON, self.inputOnce)
+		sizer = wx.BoxSizer(wx.VERTICAL)
+		sizer.Add(comboboxGroup, proportion = 1, flag = wx.GROW | wx.ALL, border = 3)
+		sizer.Add(comboboxAcounts, proportion = 1, flag = wx.GROW | wx.ALL, border = 3)
+		self.SetSizer(sizer)
 
-		self.buttonToClipboard = wx.Button(self, wx.ID_ANY, 'clip board')
-		self.buttonToClipboard.Bind(wx.EVT_BUTTON, self.toClipboard)
-
-		self.buttonExit = wx.Button(self, wx.ID_ANY, 'exit')
-		self.buttonExit.Bind(wx.EVT_BUTTON, func)
-
-		self.sizer = wx.GridSizer(2, 2)
-		self.sizer.Add(self.buttonInputTwice, flag = wx.GROW | wx.ALL, border = 3)
-		self.sizer.Add(self.buttonInputOnce, flag = wx.GROW | wx.ALL, border = 3)
-		self.sizer.Add(self.buttonToClipboard, flag = wx.GROW | wx.ALL, border = 3)
-		self.sizer.Add(self.buttonExit, flag = wx.GROW | wx.ALL, border = 3)
-		self.SetSizer(self.sizer)
-
-	def inputTwice(self, event):
-		print 'input twice'
-
-	def inputOnce(self, event):
-		print 'input once'
-
-	def toClipboard(self, event):
-		print 'to clipboard'
+		rootPanel.addPanel(self)
