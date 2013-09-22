@@ -44,6 +44,20 @@ class Groups:
 	def getAcount(self, id):
 		return self.groups[self.currentGroupNum].acounts[id]
 
+	def searchAcountWithGroupName(self, name):
+		acounts = []
+		groupNames = []
+		for group in self.groups:
+			for acount in group.acounts:
+				if acount.name == name:
+					acounts.append(acount)
+					groupNames.append(group.name)
+
+		if acounts and groupNames:
+			return acounts, groupNames
+		else:
+			return None, None
+
 	def changeGroup(self, index):
 		self.currentGroupNum = index % len(self.groups)
 

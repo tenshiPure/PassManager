@@ -6,10 +6,9 @@ from InputPanel import InputPanel
 
 class ComboBoxPanel(InputPanel):
 
-	def __init__(self, rootPanel, groups):
+	def __init__(self, rootPanel):
 		InputPanel.__init__(self, rootPanel)
 
-		self.groups = groups
 		self.acount = self.groups.getAcount(0)
 
 		groupNameList = self.groups.getGroupNameList()
@@ -30,11 +29,13 @@ class ComboBoxPanel(InputPanel):
 	def changeGroup(self, event):
 		groupNum = event.GetEventObject().GetSelection()
 		self.groups.changeGroup(groupNum)
+
 		acountDescList = self.groups.getAcountDescList()
 		self.acountsComboBox.SetItems(acountDescList)
+		self.acountsComboBox.SetValue(acountDescList[0])
+
+		self.acount = self.groups.getAcount(0)
 
 	def selectAcount(self, event):
 		acountNum = event.GetEventObject().GetSelection()
 		self.acount = self.groups.getAcount(acountNum)
-
-		self.acount.dump()
