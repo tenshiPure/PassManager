@@ -3,8 +3,9 @@
 import wx
 import pyauto
 
-from Gui.InputFrame import InputFrame
-from Gui.SelectFrame import SelectFrame
+import AutoLoader
+from InputFrame import InputFrame
+from SelectFrame import SelectFrame
 
 class PassManager:
 
