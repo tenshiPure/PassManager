@@ -9,7 +9,7 @@ from Acount import Acount
 groups = []
 Group.init()
 
-dirName = u'./Acounts'
+dirName = u'../Acounts'
 for fileName in os.listdir(dirName):
 	group = Group(fileName)
 	for line in open(os.path.join(dirName, fileName), 'r'):

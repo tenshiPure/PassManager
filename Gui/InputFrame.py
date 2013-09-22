@@ -6,8 +6,9 @@ class InputFrame:
 
 	def __init__(self, func):
 		self.application = wx.App()
-		self.frame = wx.Frame(None, wx.ID_ANY, 'input mode', size=(100, 200), pos = (50, 50))
+		self.frame = wx.Frame(None, wx.ID_ANY, 'input mode', style = wx.DEFAULT_FRAME_STYLE & ~wx.SYSTEM_MENU, size=(100, 200), pos = (50, 50))
 		self.panel = wx.Panel(self.frame,wx.ID_ANY)
+
 		self.text = wx.TextCtrl(self.panel, wx.ID_ANY, size = (90, 20), pos = (10, 10))
 
 		self.buttonInputTwice = wx.Button(self.panel, wx.ID_ANY, 'id / pass', size = (90, 20), pos = (10, 40))
