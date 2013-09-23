@@ -9,10 +9,10 @@ from ButtonPanel import ButtonPanel
 
 class TextCtrlFrame(RootFrame):
 
-	def __init__(self):
+	def __init__(self, lastActiveWindowName):
 		RootFrame.__init__(self, 'input mode')
 
 		rootPanel = RootPanel(self)
 
 		inputPanel = TextCtrlPanel(rootPanel)
-		buttonPanel = ButtonPanel(rootPanel, inputPanel)
+		buttonPanel = ButtonPanel(rootPanel, inputPanel, lastActiveWindowName, self.exitApplication)

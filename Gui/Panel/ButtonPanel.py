@@ -7,10 +7,13 @@ import AutoLoader
 
 class ButtonPanel(wx.Panel):
 
-	def __init__(self, rootPanel, inputPanel):
+	def __init__(self, rootPanel, inputPanel, lastActiveWindowName, exitFunction):
 		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
 
+		self.rootPanel = rootPanel
 		self.inputPanel = inputPanel
+		self.lastActiveWindowName = lastActiveWindowName
+		self.exitFunction = exitFunction
 
 		buttonInputTwice = wx.Button(self, wx.ID_ANY, 'id / pass')
 		buttonInputTwice.Bind(wx.EVT_BUTTON, self.inputIdAndPass)
@@ -31,22 +34,26 @@ class ButtonPanel(wx.Panel):
 		sizer.Add(buttonExit, flag = wx.GROW | wx.ALL, border = 3)
 		self.SetSizer(sizer)
 
-		rootPanel.addPanel(self)
+		self.rootPanel.addPanel(self)
 
 	def inputIdAndPass(self, event):
 		print self.getId()
 		print self.getPass()
 
 	def inputPass(self, event):
-		print self.getPass()
+		script = self.getScriptPath('InputPassword.exe')
+		pswd = self.getPass()
+		os.system('%s %s %s' % (script, self.lastActiveWindowName, pswd))
+		self.exitFunction()
 
 	def toClipboard(self, event):
 		script = self.getScriptPath('ToClipBoard.exe')
-		password = self.getPass()
-		os.system('%s %s' % (script, password))
+		pswd = self.getPass()
+		os.system('%s %s' % (script, pswd))
+		self.exitFunction()
 
 	def exit(self, event):
-		print 'exit'
+		self.exitFunction()
 
 	def getId(self):
 		acount = self.inputPanel.acount

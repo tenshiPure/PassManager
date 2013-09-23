@@ -9,10 +9,10 @@ from ButtonPanel import ButtonPanel
 
 class ComboBoxFrame(RootFrame):
 
-	def __init__(self):
+	def __init__(self, lastActiveWindowName):
 		RootFrame.__init__(self, 'select mode')
 
 		rootPanel = RootPanel(self)
 
 		inputPanel = ComboBoxPanel(rootPanel)
-		buttonPanel = ButtonPanel(rootPanel, inputPanel)
+		buttonPanel = ButtonPanel(rootPanel, inputPanel, lastActiveWindowName, self.exitApplication)
