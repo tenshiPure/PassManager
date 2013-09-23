@@ -1,7 +1,9 @@
 #-*- coding: utf-8 -*-
 
 import wx
-import Tkinter
+import os
+
+import AutoLoader
 
 class ButtonPanel(wx.Panel):
 
@@ -39,7 +41,9 @@ class ButtonPanel(wx.Panel):
 		print self.getPass()
 
 	def toClipboard(self, event):
-		print self.getPass()
+		script = self.getScriptPath('ToClipBoard.exe')
+		password = self.getPass()
+		os.system('%s %s' % (script, password))
 
 	def exit(self, event):
 		print 'exit'
@@ -51,3 +55,7 @@ class ButtonPanel(wx.Panel):
 	def getPass(self):
 		acount = self.inputPanel.acount
 		return acount.pswd if acount is not None else None
+
+	def getScriptPath(self, scriptName):
+		scriptPash = os.path.abspath(AutoLoader.ROOT_PATH + '/Gui/Button')
+		return os.path.join(scriptPash, scriptName)
