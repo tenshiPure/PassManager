@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 
 import wx
+import Tkinter
 
 class ButtonPanel(wx.Panel):
 
@@ -38,4 +39,5 @@ class ButtonPanel(wx.Panel):
 		print self.inputPanel.acount.pswd
 
 	def toClipboard(self, event):
-		print self.inputPanel.acount.pswd
+		Tkinter.Text().clipboard_clear()
+		Tkinter.Text().clipboard_append(self.inputPanel.acount.pswd)
