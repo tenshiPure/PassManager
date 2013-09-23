@@ -4,5 +4,12 @@ WinActivate, %windowName%
 Send, ^a
 Send, {DELETE}
 
-password = %2%
+id = %2%
+Send, %id%
+
+Send, {TAB}
+Send, ^a
+Send, {DELETE}
+
+password = %3%
 Send, %password%

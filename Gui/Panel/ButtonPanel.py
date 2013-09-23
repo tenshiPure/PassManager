@@ -37,8 +37,11 @@ class ButtonPanel(wx.Panel):
 		self.rootPanel.addPanel(self)
 
 	def inputIdAndPass(self, event):
-		print self.getId()
-		print self.getPass()
+		script = self.getScriptPath('InputIdAndPassword.exe')
+		id = self.getId()
+		pswd = self.getPass()
+		os.system('%s %s %s %s' % (script, self.lastActiveWindowName, id, pswd))
+		self.exitFunction()
 
 	def inputPass(self, event):
 		script = self.getScriptPath('InputPassword.exe')
