@@ -5,22 +5,22 @@ import Tkinter
 
 class ButtonPanel(wx.Panel):
 
-	def __init__(self, rootPanel, inputPanel, exitFunction):
+	def __init__(self, rootPanel, inputPanel):
 		wx.Panel.__init__(self, rootPanel, wx.ID_ANY)
 
 		self.inputPanel = inputPanel
 
 		buttonInputTwice = wx.Button(self, wx.ID_ANY, 'id / pass')
-		buttonInputTwice.Bind(wx.EVT_BUTTON, self.inputTwice)
+		buttonInputTwice.Bind(wx.EVT_BUTTON, self.inputIdAndPass)
 
 		buttonInputOnce = wx.Button(self, wx.ID_ANY, 'pass')
-		buttonInputOnce.Bind(wx.EVT_BUTTON, self.inputOnce)
+		buttonInputOnce.Bind(wx.EVT_BUTTON, self.inputPass)
 
 		buttonToClipboard = wx.Button(self, wx.ID_ANY, 'clip board')
 		buttonToClipboard.Bind(wx.EVT_BUTTON, self.toClipboard)
 
 		buttonExit = wx.Button(self, wx.ID_ANY, 'exit')
-		buttonExit.Bind(wx.EVT_BUTTON, exitFunction)
+		buttonExit.Bind(wx.EVT_BUTTON, self.exit)
 
 		sizer = wx.GridSizer(2, 2)
 		sizer.Add(buttonInputTwice, flag = wx.GROW | wx.ALL, border = 3)
@@ -31,13 +31,14 @@ class ButtonPanel(wx.Panel):
 
 		rootPanel.addPanel(self)
 
-	def inputTwice(self, event):
-		print self.inputPanel.acount.name
-		print self.inputPanel.acount.pswd
+	def inputIdAndPass(self, event):
+		print 'id / pass'
 
-	def inputOnce(self, event):
-		print self.inputPanel.acount.pswd
+	def inputPass(self, event):
+		print 'pass'
 
 	def toClipboard(self, event):
-		Tkinter.Text().clipboard_clear()
-		Tkinter.Text().clipboard_append(self.inputPanel.acount.pswd)
+		print 'clip board'
+
+	def exit(self, event):
+		print 'exit'
