@@ -25,7 +25,7 @@ class ComboBoxPanel(InputPanel):
 		acountDescList = self.groups.getAcountDescList()
 		self.acountsComboBox = wx.ComboBox(self, wx.ID_ANY, acountDescList[0], choices = acountDescList)
 		self.acountsComboBox.Bind(wx.EVT_COMBOBOX, self.selectAcount)
-		self.groupComboBox.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
+		self.acountsComboBox.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
 
 		sizer = wx.BoxSizer(wx.VERTICAL)
 		sizer.Add(self.groupComboBox, proportion = 1, flag = wx.GROW | wx.ALL, border = 3)
@@ -48,27 +48,27 @@ class ComboBoxPanel(InputPanel):
 		keyCode = event.GetKeyCode()
 		if keyCode == self.KEY_LEFT:
 			self.groups.prevGroup()
+			self.acountNum = 0
 			self._update()
 
 		if keyCode == self.KEY_RIGHT:
 			self.groups.nextGroup()
+			self.acountNum = 0
 			self._update()
 
 		if keyCode == self.KEY_UP:
-			self.acountNum += 1
-			self.acount = self.groups.getAcountByNumFromCurrentGroup(self.acountNum)
-			#丸め
-			#表記
+			self.acountNum = (self.acountNum - 1) % self.groups.getCurrentAcountsCount()
+			self._update()
 
 		if keyCode == self.KEY_DOWN:
-			self.acountNum -= 1
-			self.acount = self.groups.getAcountByNumFromCurrentGroup(self.acountNum)
+			self.acountNum = (self.acountNum + 1) % self.groups.getCurrentAcountsCount()
+			self._update()
 
 	def _update(self):
 		acountDescList = self.groups.getAcountDescList()
 		self.acountsComboBox.SetItems(acountDescList)
-		self.acountsComboBox.SetValue(acountDescList[0])
+		self.acountsComboBox.SetValue(acountDescList[self.acountNum])
 
 		self.groupComboBox.SetValue(self.groups.getCurrentGroupName())
 
-		self.acount = self.groups.getAcountByNumFromCurrentGroup(0)
+		self.acount = self.groups.getAcountByNumFromCurrentGroup(self.acountNum)

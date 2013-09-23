@@ -41,6 +41,9 @@ class Groups:
 
 		return result
 
+	def getCurrentAcountsCount(self):
+		return len(self.groups[self.currentGroupNum].acounts)
+
 	def getCurrentGroupName(self):
 		return self.groups[self.currentGroupNum].name
 
