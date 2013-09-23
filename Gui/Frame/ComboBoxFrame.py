@@ -14,5 +14,5 @@ class ComboBoxFrame(RootFrame):
 
 		rootPanel = RootPanel(self)
 
-		comboBoxPanel = ComboBoxPanel(rootPanel)
-		buttonPanel = ButtonPanel(rootPanel, comboBoxPanel)
+		inputPanel = ComboBoxPanel(rootPanel)
+		buttonPanel = ButtonPanel(rootPanel, inputPanel)

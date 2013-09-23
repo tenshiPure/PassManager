@@ -10,7 +10,6 @@ class TextCtrlPanel(InputPanel):
 		InputPanel.__init__(self, rootPanel)
 
 		self.nameText = wx.TextCtrl(self, wx.ID_ANY, 'input id here', style = wx.TE_PROCESS_ENTER)
-		self.nameText.Bind(wx.EVT_TEXT_ENTER, self.enterDown)
 		self.nameText.Bind(wx.EVT_TEXT, self.searchAcount)
 
 		self.duplicateComboBox = wx.ComboBox(self, wx.ID_ANY, '...', choices = [])
@@ -48,6 +47,3 @@ class TextCtrlPanel(InputPanel):
 	def choiceGroup(self, event):
 		groupNum = event.GetEventObject().GetSelection()
 		self.acount = self.acounts[groupNum]
-
-	def enterDown(self, event):
-		print 'enter down'

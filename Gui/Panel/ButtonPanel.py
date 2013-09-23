@@ -32,13 +32,22 @@ class ButtonPanel(wx.Panel):
 		rootPanel.addPanel(self)
 
 	def inputIdAndPass(self, event):
-		print 'id / pass'
+		print self.getId()
+		print self.getPass()
 
 	def inputPass(self, event):
-		print 'pass'
+		print self.getPass()
 
 	def toClipboard(self, event):
-		print 'clip board'
+		print self.getPass()
 
 	def exit(self, event):
 		print 'exit'
+
+	def getId(self):
+		acount = self.inputPanel.acount
+		return acount.name if acount is not None else None
+
+	def getPass(self):
+		acount = self.inputPanel.acount
+		return acount.pswd if acount is not None else None

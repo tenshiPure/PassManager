@@ -14,5 +14,5 @@ class TextCtrlFrame(RootFrame):
 
 		rootPanel = RootPanel(self)
 
-		textCtrlPanel = TextCtrlPanel(rootPanel)
-		buttonPanel = ButtonPanel(rootPanel, textCtrlPanel)
+		inputPanel = TextCtrlPanel(rootPanel)
+		buttonPanel = ButtonPanel(rootPanel, inputPanel)
